@@ -1,3 +1,15 @@
+/*
+  Problem: #18 Four Sum
+  Difficulty: Medium
+  Topics: Array, Sorting, Two Pointers
+  Time: O(n^4) | Space: O(n)
+
+  Approach:
+  Use 4 nested loops to check all quadruplets.
+  Sort each quadruplet before storing, then sort the result 
+  array and remove adjacent duplicates.
+*/
+
 #include <iostream>
 using namespace std;
 #include <vector>

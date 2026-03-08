@@ -1,3 +1,17 @@
+/*
+  Problem: #14 Longest Common Prefix
+  Difficulty: Easy
+  Topics: String, Array
+  Time: O(n * m) | Space: O(n * m)
+
+  Approach:
+  Find the shortest string length to limit comparisons.
+  Flatten all characters column-by-column into string `s`,
+  then check each column if all chars match the first string's
+  char at that position. Stop as soon as a mismatch is found.
+
+  n = number of strings, m = length of shortest string
+*/
 #include <iostream>
 #include <vector>
 #include <string>

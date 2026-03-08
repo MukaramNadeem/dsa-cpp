@@ -1,3 +1,15 @@
+/*
+  Problem: #13 Roman to Integer
+  Difficulty: Easy
+  Topics: Hash Map, String, Math
+  Time: O(n) | Space: O(1)
+
+  Approach:
+  Traverse string in reverse, storing last two chars to detect
+  subtractive pairs (IV, IX, XL, XC, CD, CM). If a pair matches,
+  replace the already-added value with the correct subtracted value.
+  Otherwise add the current character's value normally.
+*/
 #include <iostream>
 using namespace std;
 #include <map>

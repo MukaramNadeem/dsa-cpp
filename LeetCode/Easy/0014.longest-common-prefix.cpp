@@ -1,3 +1,17 @@
+/*
+  Problem: #14 Longest Common Prefix
+  Difficulty: Easy
+  Topics: String, Array, Matrix
+  Time: O(n * m) | Space: O(n * m)
+
+  Approach:
+  Find shortest string length, then build a matrix where each row
+  holds the i-th character of every string (column-by-column view).
+  Traverse each row, if all chars match the first, add to result.
+  Stop as soon as a mismatch is found.
+
+  n = number of strings, m = length of shortest string
+*/
 #include <iostream>
 #include <vector>
 #include <string>
