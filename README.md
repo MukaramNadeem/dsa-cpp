@@ -39,9 +39,9 @@ dsa-cpp/
 │   │   └── Applications/
 │   └── Queue/
 |
-└── LeetCode/
-    ├── Easy/
-    ├── Medium/
-    └── Hard/
+├── LeetCode/
+│   ├── Easy/
+│   ├── Medium/
+│   └── Hard/
 ```
 ---
