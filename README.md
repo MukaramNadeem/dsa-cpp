@@ -44,6 +44,6 @@ dsa-cpp/
 │   ├── Medium/
 │   └── Hard/
 │
-└── Readme.md
+└── README.md
 ```
 ---
