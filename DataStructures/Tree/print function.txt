@@ -1,0 +1,114 @@
+print function for BST.
+
+
+#include <cmath>
+#include <queue>
+#include <string>
+#include <vector>
+
+
+// Prints the tree top-to-bottom using BFS (level order)
+    void print(){
+  if (root == NULL) {
+    cout << "(empty tree)" << endl;
+    return;
+  }
+
+  // --- Step 1: Find height of the tree ---
+  int height = 0;
+  queue<Node *> temp;
+  temp.push(root);
+  while (!temp.empty()) {
+    int size = temp.size();
+    height++;
+    for (int i = 0; i < size; i++) {
+      Node *n = temp.front();
+      temp.pop();
+      if (n->left)
+        temp.push(n->left);
+      if (n->right)
+        temp.push(n->right);
+    }
+  }
+
+  // --- Step 2: Print level by level ---
+  // Bottom level has 2^(height-1) slots
+  // Each value takes 3 characters wide (e.g. " 10", "  5")
+  int cellWidth = 3;
+
+  queue<Node *> q;
+  q.push(root);
+
+  for (int level = 0; level < height; level++) {
+
+    int nodesInLevel = pow(2, level);          // how many nodes in this level
+    int bottomSlots = pow(2, height - 1);      // total slots at bottom level
+    int slotSpan = bottomSlots / nodesInLevel; // slots each node spans
+
+    // --- Print node values ---
+    for (int i = 0; i < nodesInLevel; i++) {
+      Node *cur = q.front();
+      q.pop();
+
+      // Each node sits centered in (slotSpan * cellWidth) characters
+      int totalSpace = slotSpan * cellWidth;
+      int leftPad = (totalSpace - cellWidth) / 2;
+      int rightPad = totalSpace - cellWidth - leftPad;
+
+      // Spaces before value
+      cout << string(leftPad, ' ');
+
+      // Print value or blank
+      if (cur != NULL) {
+        string val = to_string(cur->val);
+        cout << string(cellWidth - val.size(), ' ') << val;
+      } else {
+        cout << string(cellWidth, ' ');
+      }
+
+      // Spaces after value
+      cout << string(rightPad, ' ');
+
+      // Push children (NULL as placeholder if node is missing)
+      q.push(cur ? cur->left : NULL);
+      q.push(cur ? cur->right : NULL);
+    }
+    cout << endl;
+
+    // --- Print / and \ branch lines ---
+    if (level < height - 1) {
+      // Peek at children we just pushed to know where to draw / and \.
+      int childCount = nodesInLevel * 2;
+      vector<Node *> children;
+      queue<Node *> backup;
+      for (int j = 0; j < childCount; j++) {
+        children.push_back(q.front());
+        backup.push(q.front());
+        q.pop();
+      }
+      q = backup;
+
+      int childSlotSpan = slotSpan / 2;
+      int totalSpace = slotSpan * cellWidth;
+      int center = totalSpace / 2;
+
+      for (int i = 0; i < nodesInLevel; i++) {
+        Node *leftChild = children[i * 2];
+        Node *rightChild = children[i * 2 + 1];
+
+        for (int col = 0; col < totalSpace; col++) {
+          if (leftChild && col == center - cellWidth)
+            cout << "/";
+          else if (rightChild && col == center + cellWidth - 1)
+            cout << "\\";
+          else
+            cout << " ";
+        }
+      }
+      cout << endl;
+    }
+  }
+}
+
+cout << "Binary Search tree:" << endl;
+bst1.print();

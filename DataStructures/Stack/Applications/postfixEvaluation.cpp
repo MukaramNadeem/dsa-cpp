@@ -67,8 +67,8 @@ struct Stack{
             
         }
 
-            cout<<pop()<<endl;
-            return top==-1 ? "True" : "False";
+        cout<<pop()<<endl;
+        return top==-1 ? "True" : "False";
     }
 };
 
