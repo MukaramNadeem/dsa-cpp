@@ -35,13 +35,16 @@ dsa-cpp/
 │   │   └── Applications/
 │   ├── LinkedList/
 │   │   └── Applications/
+│   ├── Queue/
 │   ├── Stack/
 │   │   └── Applications/
-│   └── Queue/
-|
-└── LeetCode/
-    ├── Easy/
-    ├── Medium/
-    └── Hard/
+│   └── Tree/
+│
+├── LeetCode/
+│   ├── Easy/
+│   ├── Medium/
+│   └── Hard/
+│
+└── README.md
 ```
 ---
