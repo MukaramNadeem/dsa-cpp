@@ -1,0 +1,28 @@
+#include <cmath>
+#include <iomanip>
+
+
+void print_tree(int array[], int size) {
+    if (size == 0) return;
+
+    // Calculate depth of the tree
+    int depth = log2(size) + 1;
+    int index = 0;
+
+    for (int i = 0; i < depth; i++) {
+        // Numbers on this level: 2^i
+        int level_nodes = pow(2, i);
+        
+        // Initial padding for this level
+        int padding = pow(2, depth - i) * 2;
+        
+        for (int j = 0; j < level_nodes && index < size; j++) {
+            // Print leading spaces
+            if (j == 0) cout << setw(padding / 2) << "";
+            else cout << setw(padding) << "";
+            
+            cout << array[index++];
+        }
+        cout << endl << endl; // Double space levels for clarity
+    }
+}
