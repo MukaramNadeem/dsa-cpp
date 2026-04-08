@@ -13,10 +13,10 @@ struct Stack{
    // push function
    void push(int val){
        // Overflow condition.
-       if (top >= Size - 1){
+        if (top >= Size - 1){
            throw invalid_argument("Overflow");
        }
-       else{
+        else{
            top++;
            stack[top] = val;
        }

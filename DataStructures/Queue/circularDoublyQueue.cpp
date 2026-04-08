@@ -78,7 +78,7 @@ struct doublyCircularQueue{
             rear = 0;
             queue[front] = val;
         }
-        // to mkae it circular!!!     //Few more changes in rear!!!
+        // to make it circular!!!     //Few more changes in rear!!!
         else if(front==0){            //change!!!
             front = Size-1;           //change!!!
             queue[front] = val; 
