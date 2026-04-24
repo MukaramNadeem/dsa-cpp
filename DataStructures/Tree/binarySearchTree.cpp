@@ -55,6 +55,38 @@ struct BST{
             cout<<node->val<<" ";
         }
     }
+
+    void del(Node*& root, int x){
+        if(root == nullptr){
+            return;
+        }
+        if(root->val > x){
+            del(root->left, x);
+        }
+        else if(root->val < x){
+            del(root->right, x);
+        }
+        else{
+            if(root->left == nullptr){
+                Node* temp = root;
+                root = root->right;
+                delete temp;
+            }
+            else if(root->right == nullptr){
+                Node* temp = root;
+                root = root->left;
+                delete temp;
+            }
+            else{
+                Node* successor = root-> right;
+                while(successor->left!=nullptr){
+                    successor = successor->left;
+                }
+                root->val = successor->val;
+                del(root->right,x);
+            }
+        }
+    }
     
 };
 
@@ -71,6 +103,7 @@ int main(){
     bst1.insert(bst1.root, 1);
 
 
+    bst1.del(bst1.root,20);
 
     cout<<"Preorder Traversal:"<<endl;
     bst1.preorderTraversal(bst1.root);
