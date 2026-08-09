@@ -10,6 +10,7 @@
 !*.sh
 !*.js
 !*.java
+!*.py
 
 # Re-allow directories (so git can traverse them)
 !*/
